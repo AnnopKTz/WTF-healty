@@ -4,9 +4,8 @@ using namespace std;
 
 int main(){
 	bool check,check2 = true;
-	int day=0;
 	string name;
-	int age,date;
+	int age,date,day;
 	float hight,weight,bmi,bmr,tdee,focus;
 	char gender;
 	double cal_eat;
@@ -85,7 +84,6 @@ int main(){
 	
 	do{ 
 		char i;
-		day++;
 		A.CalFood();
 		cout<<A.CalCal(day)<<endl;
 		cout<<"\nYou want to fill cal next day Y/N : ";
@@ -96,6 +94,7 @@ int main(){
 		}else if(i=='N'){
 			check=false;
 		}
+		day--;
 	}while(check);
 	
 	return 0;
