@@ -9,6 +9,7 @@ using namespace std;
 
 class FindAll{
 	public :
+		int rang,walk,calwalk,min,hour=0;
 		double return_bmi[2];
 		vector <int> menufood;
 		int caseactivity;
@@ -37,6 +38,7 @@ class FindAll{
 		bool check;
 		void CalFood();
 		void reBMI();
+		void walkcal();
 };
 
 ofstream namelist("namelist.txt",ios::app);
@@ -191,5 +193,34 @@ void FindAll::CalFood(){
 	namelist.close();
 }
 
-
+void FindAll::walkcal(){
+	cout<<"Enter cal per day : ";
+	cin>>rang;
+	if(rang<bmr){
+		cout<<"Walk 30 minute"; //standard
+	}else if(rang<bmr+200){
+		cout<<"Walk 40 minute" ;// plus 40 per 200 cal
+	}else if(rang<bmr+400){
+		cout<<"Walk 1 hour 20 minute";
+	}else if(rang<bmr+600){
+		cout<<"Walk 2 hour ";
+	}else if(rang<bmr+800){
+		cout<<"Walk 2 hour 40 minute";
+	}else{
+		walk=rang-bmr;
+		calwalk=walk/5;
+		do{
+			for(;calwalk>=60;){
+				hour++;
+				calwalk-=60;
+			}if(calwalk){
+				min=calwalk;
+			}
+		}while(calwalk<60);
+		cout<<"Walk "<<hour<<" hour "<<min<<" minute";
+		
+	}
+		
+	
+}
 
