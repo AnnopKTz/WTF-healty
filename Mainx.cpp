@@ -1,27 +1,27 @@
 #include "FuncFindx.h"
-#include <Windows.h>
+#include "Windows.h"
 using namespace std;
 
 int main(){
 	bool check,check2 = true,check3,checkname=true;
 	int day=0;
 	string name;
-	int age,date,count=0;
+	int age,date,count=0,checkfile=0;
 	float hight,weight,bmi,bmr,tdee,focus;
 	char gender;
 	double cal_eat;
 	char command;
 	FindAll A(name,age,hight,weight,gender);
+	//HANDLE h=GetStdHandle(STD_OUTPUT_HANDLE);
+	// SetConsoleTextAttribute(h,FOREGROUND_RED | FOREGROUND_INTENSITY);
 	
-	HANDLE h=GetStdHandle(STD_OUTPUT_HANDLE);
-	 SetConsoleTextAttribute(h,FOREGROUND_RED | FOREGROUND_INTENSITY);
 	do{
 		cout << "You ever use this programs Y/N : ";
 		cin >> command;
 		command = toupper(command);
 		if(command == 'N'){
 			ifstream namelist("namelist.txt");
-			SetConsoleTextAttribute(h,FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+		//	SetConsoleTextAttribute(h,FOREGROUND_GREEN | FOREGROUND_INTENSITY);
 			cout<<"Enter name : ";
 			cin.ignore();
 			getline(cin,A.name);
@@ -33,7 +33,7 @@ int main(){
 				};
 			while(getline(namelist,text)){
 				const char *textchar = text.c_str();
-				char format[] = "%[^:]:";
+				char format[] = "%[^:]";
 				char namechar[100];
 				sscanf(textchar,format,namechar);
 				for(int i=0;i<100;i++){
@@ -46,12 +46,11 @@ int main(){
 			}
 			namelist.close();
 			if(checkname){
-				SetConsoleTextAttribute(h,FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+		//		SetConsoleTextAttribute(h,FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 				cout << "Hello " << A.name << " plase fill the information\n";
 				cout << "Age : ";
 				cin >> A.age;
 				do{
-					SetConsoleTextAttribute(h,FOREGROUND_GREEN | FOREGROUND_INTENSITY);
 					cout << "Gender M/F : ";
 					cin >> A.gender;
 					A.gender = toupper(A.gender);
@@ -72,7 +71,7 @@ int main(){
 			ifstream namelist("namelist.txt");
 			ofstream copy("copy.txt");
 			do{
-				SetConsoleTextAttribute(h,FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+		//		SetConsoleTextAttribute(h,FOREGROUND_GREEN | FOREGROUND_INTENSITY);
 				cout << "Enter name : ";
 				cin.ignore();
 				getline(cin,name);
@@ -81,8 +80,6 @@ int main(){
 				for(int i=0;i<name.size();i++){
 						(name[i]) = toupper(name[i]);
 					};
-				
-				cout << "Hello " << names << endl;
 				while(getline(namelist,text)){
 					const char *textchar = text.c_str();
 					char format[] = "%[^:]: %d %f %f %c %f %f %f %f %d";
@@ -92,8 +89,9 @@ int main(){
 					for(int i=0;i<100;i++){
 						(namechar[i]) = toupper(namechar[i]);
 					};
-					SetConsoleTextAttribute(h,FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+		//			SetConsoleTextAttribute(h,FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 					if(namechar == name){
+						cout << "Hello " << A.name << endl;
 						cout << "Age : " << A.age << endl;
 						cout << "Gender : " << A.gender << endl;
 						cout << "Hight : " << A.hight << endl;
@@ -108,13 +106,15 @@ int main(){
 					if(count == 0 or check2 == true) copy << textchar << endl;
 					check3 = true;
 				}
-				SetConsoleTextAttribute(h,FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-				if(count == 0) cout << "Cannot Found. Please input your name again." << endl;
-				}while(count == 0);
 				namelist.close();
 				copy.close();
+		//		SetConsoleTextAttribute(h,FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+				if(count == 0) cout << "Cannot Found. Please input your name again." << endl;
+				}while(count == 0);
+				
+				checkfile++;
 			}
-			SetConsoleTextAttribute(h,FOREGROUND_RED | FOREGROUND_INTENSITY);
+		//	SetConsoleTextAttribute(h,FOREGROUND_RED | FOREGROUND_INTENSITY);
 			if(checkname == false) cout << "You have information in program." << endl;
 			else if(count == 0) cout << "Invalid command. Please input Y or N." << endl;
 		}while(count == 0 or check3 == false);
@@ -133,7 +133,9 @@ int main(){
 			check=false;
 		}
 	}while(check);
-	remove("namelist.txt");
+	if(checkfile == 1){
+		remove("namelist.txt");
+	}
 	ifstream copy("copy.txt");
 	ofstream namelist("namelist.txt",ios::app);
 	string text;
