@@ -5,6 +5,7 @@
 #include<cstdlib>
 #include<fstream>
 #include<vector>
+#include<stdio.h>
 using namespace std;
 
 class FindAll{
@@ -28,11 +29,12 @@ class FindAll{
 		int diet,remain_date; 
 		double sum; //calort for diet
 		FindAll(string,int,float,float,char,float,float,float,int,int);
+		FindAll();
 		double BMI();
 		double BMR();
 		double TDEE();
 		double Diet();
-		double CalCal(int);
+		double CalCal();
 		double choose();
 		bool check;
 		void CalFood();
@@ -40,6 +42,10 @@ class FindAll{
 };
 
 ofstream namelist("namelist.txt",ios::app);
+
+FindAll::FindAll(){
+	
+};
 
 FindAll::FindAll(string n,int a,float h,float w,char g,float q=0,float x=0,float y=0,int z=0,int i=0){
 	name=n;
@@ -57,6 +63,7 @@ FindAll::FindAll(string n,int a,float h,float w,char g,float q=0,float x=0,float
 
 double FindAll::BMI(){
 	double bmi = weight/pow((hight/100),2);
+	
 	if(bmi < 18.50){
 		cout << "Standard : Underweight/thin\n";
 		cout << "Risk of disease : Much/Increase\n";
@@ -81,6 +88,7 @@ double FindAll::BMI(){
 		cout << "Direction : 1.Should a diet to reduce the amount of food or diet modifications from that much energy is energy food less.The energy shouldn't be less than 1,200 kcal a day by reducing fat, meat, sauce, fried, dessert and alcoholicbut eating the right proportions. Eat vegetables and friuts. To reduce energy The body has accumulated excess energy in the form of fat.2.You should the motion and aerobic exercise regularly, every day. Or nearly every day for at least 30 minutes a day can be a day 2-3 times.Then gradually add more time each week. Without adding weight When the body adapt gradually increase the intensity.Or exhaustion as needed In order to have the energy to rise. At least 200-300 kcal. 3.You should strength training muscle training exercises or weight training will help provide the body with more energy consumption. Causes of fat decreased.4.If you can reduce the energy from food into a 400 kcal per day and increased use.The energy of 200 kcal per day for exercise. Then you have power sesame decreased to 600 kcal per day,6 days a gym about 3600 kcal of energy depletion will reduce by about half a kilogram per week.3500 kcal of energy into or out will increase or decrease fat, 1 lb or 0.45 kg.5.You should see a doctor.\n";
 	}
 	namelist << " " << bmi;
+
 	return bmi;
 }
 
@@ -98,8 +106,7 @@ double FindAll::BMR(){
 
 double FindAll::TDEE(){
 	do{
-		cout<<"Enter your activity 1-5 : ";
-		cin>>caseactivity;
+		caseactivity=tdee;
 		if(caseactivity>=1&&caseactivity<=5){
 			check=false;
 		}else{	
@@ -129,9 +136,8 @@ double FindAll::Diet(){
 		cin.ignore();
 		cin>>minus;
 		focus=weight-minus;
-		namelist << " " << focus;
+		namelist << " " << focus; 
 		cout<<"How many day do you have : ";
-		cin.ignore();
 		cin>>remain_date;
 		namelist << " " << remain_date;
 		diet=minus*7700/remain_date;
@@ -145,14 +151,14 @@ double FindAll::Diet(){
 	return diet;
 }
 
-double FindAll::CalCal(int c){
-	c=remain_date;
-	double e=focus*7700;
+double FindAll::CalCal(){
+	double e=minus*7700;
 	double s=tdee-food_sum;
 	cout<<"\ttotal CAL = " << e-s <<endl;
-	calday=(e-s)/c;
-	c--;
-	cout << "\tYour plan remaining " << c<< " day.\n\tYou must eat not over :"<<calday;
+	calday= tdee-((e-s)/remain_date);
+	remain_date--;
+	cout << "\tYour plan remaining " << remain_date<< " day.\n\tYou must eat not over :"<<calday;
+	
 }
 
 void FindAll::reBMI(){
