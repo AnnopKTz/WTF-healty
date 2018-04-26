@@ -1,0 +1,84 @@
+Fish maw						150
+Cultivated banana					60
+Banana							120
+Banana in coconut milk					230
+Iced coffee						115
+Chinese roll noodle soup				240
+Thai fried noodle with Shrimp				545
+Noodle with pork blood					180	
+Tomyam noodle						335
+Fried noodle with pork					520
+noodle with pork in gravy				405
+Rice noodles in fish curry sauce with vegetable		375
+Stewed pork leg on rice					690
+Rice porridge						120
+Rice Mixed with Shrimp paste				410
+Rice topped with stir-frice pork and basil		580
+Fried rice with shrimp					595
+Fried rice with crab					610
+Steamed chicken with rice				585
+Rice with roast duck					495
+Barbecued red pork in sauce with rice			560
+Steamed rice						240
+curried noodles soup					395
+Rice and thai omelet					445
+Grilled Pork						200
+Spicy minced pork salad					130
+Papaya salad						55
+Pork in Spicy Condiment					165
+shrimps with glass noodles				300
+Wonton soup						225
+Steamed duck						110
+Clear Soup with Tofu and Minced Pork			90
+Massa man curry						325
+Sour soup made of tamarind paste			105
+Chicken green curry					240
+Spicy curry						240
+Congee with pork					160
+Grilled chicken						165
+Fried egg						165
+Egg and Pork in Sweet Brown Sauce			180
+Minced pork omelet					250
+Steamed egg						75
+Rice stir-fried pork with garlic			495
+Rice topped with crispy pork pork and basil		650
+Porridge with fish					325
+Crispy Pork with Kale					670
+Instant noodle						253
+egg noodle and pork wonton soup with red roasted pork	305
+egg noodle soup with red roasted pork			231
+Sweet egg floss						146
+Dumplings in coconut cream				223
+Iced dessert						230
+Pizza							325
+Ham cheese sandwich					290
+Banana cake						370
+Rosette							145
+Vanilla ice-cream					140
+Chocolate ice-cream					110
+Strawberry ice-cream					110
+Glass Noodle Pork Nut Spicy Salad			120
+Instant noodle spicy salad				215
+Spicy seafood salad					132
+Yentafo noodles						290
+Fried rice with chili sauce pork			665
+Curry rice with pork					457
+coconut custard with sticky rice			223
+Fried pork with rice					416
+Croissants						235
+Cantaloupe						4
+Watermelon						250
+Coke							100
+Orange juice						160
+Coconut juice						120
+Fried macaroni with pork				514
+Green mango						110
+Spaghetti with pork					450
+Pork steak						295
+Chicken salad						97
+Sukiyaki chicken					345
+Sukiyaki sea						280
+Chim chum						375
+Thai Barbeque						375
+Grilled pork						125
+Apple							42
