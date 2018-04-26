@@ -126,12 +126,11 @@ double FindAll::Diet(){
 			cout<<"\tYou should add up to weight do you want or day \n";
 		}
 		cout<<"How mush weight do you want : ";
-		cin.ignore();
 		cin>>focus;
+		minus = weight - focus;
 		cout<<"How many day do you have : ";
-		cin.ignore();
 		cin>>remain_date;
-		diet=focus*7700/remain_date;
+		diet=minus*7700/remain_date;
 		if(diet<1200){
 			cout<<"\tIt's hard to do this plan.\n\tPlese change your plan\n";
 			check=true;
@@ -170,7 +169,6 @@ void FindAll::CalFood(){
 	do{ 
 		//system("cls");
 		cout<<"\nEnter food : ";
-		cin.ignore();
 		cin>>food_order;
 		food_sum+= menu[food_order];
 		cout<<"You eat "<<food_sum<<" cal";
