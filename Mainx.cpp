@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-	bool check,check2 = true,check3,checkname;
+	bool check,check2 = true,check3,checkname=true;
 	int day=0;
 	string name;
 	int age,date,count=0;
@@ -17,29 +17,30 @@ int main(){
 		cin >> command;
 		command = toupper(command);
 		if(command == 'N'){
-			fstream namelist("namelist.txt",ios::app);
+			ifstream namelist("namelist.txt");
 			cout<<"Enter name : ";
 			cin.ignore();
 			getline(cin,A.name);
+			checkname = true;
 			string name = A.name;
 			string text;
 			for(int i=0;i<name.size();i++){
 					(name[i]) = toupper(name[i]);
 				};
 			while(getline(namelist,text)){
-					const char *textchar = text.c_str();
-					char format[] = "%[^:]: %d %f %f %c %f %f %f %f %d";
-					char namechar[100];
-					sscanf(textchar,format,namechar,&A.age,&A.hight,&A.weight,&A.gender,&A.bmi,&A.bmr,&A.tdee,&A.focus,&A.remain_date);
-					for(int i=0;i<100;i++){
-						(namechar[i]) = toupper(namechar[i]);
-					};
-					
-					if(namechar == name){ 
-						checkname = false; 
-						continue;
-					} 
+				const char *textchar = text.c_str();
+				char format[] = "%[^:]";
+				char namechar[100];
+				sscanf(textchar,format,namechar);
+				for(int i=0;i<100;i++){
+					(namechar[i]) = toupper(namechar[i]);
+				};
+				if(namechar == name){ 
+					checkname = false; 
+					continue;
+				}
 			}
+			namelist.close();
 			if(checkname){
 				cout << "Hello " << A.name << " plase fill the information\n";
 				cout << "Age : ";
@@ -61,7 +62,6 @@ int main(){
 				cout << "You must the enegy " << A.Diet() << "(Kcal) per day" << endl;
 				break;
 			}
-			
 		}else if(command == 'Y'){
 			ifstream namelist("namelist.txt");
 			ofstream copy("copy.txt");
@@ -109,7 +109,6 @@ int main(){
 			if(checkname == false) cout << "You have information in program." << endl;
 			else if(count == 0) cout << "Invalid command. Please input Y or N." << endl;
 		}while(count == 0 or check3 == false);
-	
 	
 	do{
 		char i;
