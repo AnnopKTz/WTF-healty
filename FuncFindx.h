@@ -158,11 +158,15 @@ void FindAll::reBMI(){
 
 void FindAll::CalFood(){
 	food_sum=0;
-	ifstream fin("menufood.txt");
+	ifstream fin("newmenufood.txt");
 	string text;
 	vector<int> menu;
 	while(getline(fin,text)){
-		int s = atoi(text.c_str());
+		const char *textchar = text.c_str();
+		char format[] = "%[^:]:%d";
+		char namechar[100];
+		int s;
+		sscanf(textchar,format,namechar,&s); 
 		menu.push_back(s);
 	}
 	check=false;
